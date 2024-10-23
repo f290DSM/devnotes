@@ -11,3 +11,6 @@ public class DevnotesApplication {
 	}
 
 }
+
+// Gabriel Cardoso, Cristofer, Giovani, Marcelo, Gabriel Oliveira, Josias, Athos, Pedro Nicolau
+// Eduard, Stephan, Pedro Rufino, Kaliel, Marco 

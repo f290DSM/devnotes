@@ -1,6 +1,7 @@
 package br.com.fatecararas.devnotes.model.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,24 @@ public class CategoriaService {
                         .descricao(c.getDescricao())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public void excluir(Long id) {
+        repository.deleteById(id);
+    }
+
+    public Categoria buscarPorId(Long id) throws Exception{
+        Optional<Categoria> optional = repository.findById(id);
+        if (optional.isEmpty()) {
+            throw new Exception("Categoria não localizada. ID: " + id);
+        }
+
+        return optional.get();
+    }
+
+    public void atualizar(Categoria categoria) throws Exception {
+        Categoria c = buscarPorId(categoria.getId());
+        c.setDescricao(categoria.getDescricao());
+        salvar(c);
     }
 }
