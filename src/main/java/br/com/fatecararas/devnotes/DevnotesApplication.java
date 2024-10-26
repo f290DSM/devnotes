@@ -14,3 +14,8 @@ public class DevnotesApplication {
 
 // Gabriel Cardoso, Cristofer, Giovani, Marcelo, Gabriel Oliveira, Josias, Athos, Pedro Nicolau
 // Eduard, Stephan, Pedro Rufino, Kaliel, Marco 
+
+//23.10
+// Stephan, Cristian, Felipe, Pedro Rufino, Kaliel
+//Luis Henr. Jonatas, Bruno, Marcos, Vitor, Darlan, Marcelo, Eduardo(Problema com Pai)
+// Gabriel Oliveira, Gabriel cardoso, Pedro Nicolau

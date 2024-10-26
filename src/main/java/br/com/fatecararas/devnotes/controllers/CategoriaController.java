@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.service.annotation.PatchExchange;
 
 import br.com.fatecararas.devnotes.controllers.dtos.CategoriaDTO;
 import br.com.fatecararas.devnotes.model.services.CategoriaService;
@@ -25,15 +23,13 @@ public class CategoriaController {
     private CategoriaService service;
 
     @GetMapping
-    public String categorias() {
-        // List<CategoriaDTO> categorias = service.buscarTodas();
-        // model.addAttribute("categorias", categorias);
-        return "listar";
+    public String categorias() {        
+        return "categorias/listar";
     }
 
     @GetMapping("/cadastrar")
     public String criar(Categoria categoria) {
-        return "cadastrar";
+        return "categorias/cadastrar";
     }
 
     @PostMapping("/salvar")
@@ -63,30 +59,15 @@ public class CategoriaController {
         try {
             Categoria categoria = service.buscarPorId(id);
             model.addAttribute("categoria", categoria);
-            return "cadastrar";
+            return "categorias/cadastrar";
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "redirect:/categorias";
     }
 
-    @GetMapping("/soma/{a}/{b}")
-    public String somaPathVariable(@PathVariable("a") Integer a,
-            @PathVariable("b") Integer b) {
-        Integer r = a + b;
-        System.out.printf("A soma de %d e %d é %d.\n", a, b, r);
-        return "listar";
-    }
-
-    @GetMapping("/soma")
-    public String somaRequestParam(@RequestParam("a") Integer a,
-            @RequestParam("b") Integer b) {
-        Integer r = a + b;
-        System.out.printf("A soma de %d e %d é %d.\n", a, b, r);
-        return "listar";
-    }
-
-    @ModelAttribute
+    // Inclusão dos objetos necessários para a listagem e cadastro de categorias
+    @ModelAttribute(name = "categorias")
     public List<CategoriaDTO> getCategorias() {
         return service.buscarTodas();
     }
