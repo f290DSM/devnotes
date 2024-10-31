@@ -2,12 +2,12 @@ spring:
   application:
     name: devnotes
   datasource:
-    url: jdbc:h2:mem:fatec
-    username: aluno
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/devnotes?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: 
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: none
     properties:

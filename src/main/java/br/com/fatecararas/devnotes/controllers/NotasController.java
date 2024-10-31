@@ -40,7 +40,6 @@ public class NotasController {
     }
 
     //TODO: Criar os recursos para edição e exclusão da notas
-
     // Inclusão dos objetos necessários para a listagem e cadastro de notas
     @ModelAttribute(name = "notas")
     public List<Nota> getNotas() {
