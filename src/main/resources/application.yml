@@ -2,14 +2,14 @@ spring:
   application:
     name: devnotes
   datasource:
-    url: jdbc:mysql://localhost:3306/devnotes?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
-    username: root
-    password: 
-    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true

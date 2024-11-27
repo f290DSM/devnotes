@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.fatecararas.devnotes.api.config.exception.ObjectNotFoundException;
 import br.com.fatecararas.devnotes.controllers.dtos.CategoriaDTO;
 import br.com.fatecararas.devnotes.model.entities.Categoria;
 import br.com.fatecararas.devnotes.model.repositories.CategoriaRepository;
@@ -38,7 +39,7 @@ public class CategoriaService {
     public Categoria buscarPorId(Long id) throws Exception{
         Optional<Categoria> optional = repository.findById(id);
         if (optional.isEmpty()) {
-            throw new Exception("Categoria não localizada. ID: " + id);
+            throw new ObjectNotFoundException("Categoria não localizada. ID: " + id);
         }
 
         return optional.get();
