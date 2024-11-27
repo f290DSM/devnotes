@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import br.com.fatecararas.devnotes.model.services.CategoriaService;
 public class CategoriasResource {
     @Autowired
     private CategoriaService service;
-    
+
     @GetMapping
     public List<CategoriaDTO> findAll() {
         return service.buscarTodas();
@@ -42,7 +43,12 @@ public class CategoriasResource {
         service.excluir(id);
     }
 
-    //TODO: Cria o método de alteração de categoria.
+    // TODO: Cria o método de alteração de categoria.
 
-    //TODO: Cria o método de busca por ID de categoria.
+    // TODO: Cria o método de busca por ID de categoria.
+    @ResponseStatus(code = HttpStatus.OK)
+    @GetMapping("/{id}")
+    public Categoria findById(@PathVariable("id") Long id) throws Exception{
+        return service.buscarPorId(id);
+    }
 }
