@@ -2,6 +2,8 @@ package br.com.fatecararas.devnotes.api.resources;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +20,13 @@ import br.com.fatecararas.devnotes.controllers.dtos.CategoriaDTO;
 import br.com.fatecararas.devnotes.model.entities.Categoria;
 import br.com.fatecararas.devnotes.model.services.CategoriaService;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/categorias")
 public class CategoriasResource {
-    @Autowired
-    private CategoriaService service;
+
+    private final CategoriaService service;
+    private final ModelMapper mapper;
 
     @GetMapping
     public List<CategoriaDTO> findAll() {
@@ -31,10 +35,9 @@ public class CategoriasResource {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/salvar")
-    public Categoria salvar(@RequestBody CategoriaDTO dto) {
-        var c = new Categoria();
-        c.setDescricao(dto.getDescricao());
-        return service.salvar(c);
+    public CategoriaDTO salvar(@RequestBody CategoriaDTO dto) {
+        Categoria categoria = service.salvar(mapper.map(dto, Categoria.class));
+        return mapper.map(categoria, CategoriaDTO.class);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

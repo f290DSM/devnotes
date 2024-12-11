@@ -18,9 +18,9 @@ alter table if exists notas
     references categorias;
 
 
--- insert into categorias (descricao)
--- values ('Java'),
---     ('Dart'),
---     ('Kotlin'),
---     ('C++'),
---     ('Python');
+insert into categorias (descricao)
+values ('Java'),
+    ('Dart'),
+    ('Kotlin'),
+    ('C++'),
+    ('Python');
